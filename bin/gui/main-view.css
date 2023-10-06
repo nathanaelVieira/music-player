@@ -9,6 +9,6 @@
 	-fx-arc-width: 25.0;
 	-fx-arc-height: 25.0;
 	-fx-fill: -black-ish;
-	-fx-stroke-width: 0.2cm;
+	-fx-stroke-width: 0.2ex;
 	-fx-stroke: -white-ish;
 }
