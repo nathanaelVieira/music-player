@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 
 <Group fx:id="backgroundArea" stylesheets="@main-view.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainVIewController">
    <children>
-      <Rectangle id="application-area" fx:id="rectangledArea" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="275.0" stroke="BLACK" strokeType="INSIDE" width="551.0" />
+      <Rectangle id="application-area" fx:id="rectangledArea" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="275.0" stroke="BLACK" strokeType="INSIDE" width="551.0">
+         <effect>
+            <InnerShadow blurType="GAUSSIAN" height="60.0" radius="29.5" width="60.0">
+               <color>
+                  <Color red="0.06437142938375473" green="0.02850000001490116" blue="0.15000000596046448" />
+               </color>
+            </InnerShadow>
+         </effect></Rectangle>
+      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="551.0" style="-fx-arc-width: 20;">
+        <menus>
+          <Menu fx:id="file" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="close" mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </Group>

@@ -19,20 +19,22 @@ public class BorderArea {
 		Rectangle rectangleLarger = new Rectangle(551, 275);
 		rectangleLarger.setArcHeight(25);
 		rectangleLarger.setArcWidth(25);
-		Rectangle rectangleSmaller = new Rectangle(4, 5, 543, 266);
+		Rectangle rectangleSmaller = new Rectangle(2, 3, 546, 269);
 		rectangleSmaller.setArcHeight(15);
 		rectangleSmaller.setArcWidth(15);
 		shape = Path.subtract(rectangleLarger, rectangleSmaller);
 
-		Stop[] stops = new Stop[] { new Stop(0, Color.valueOf("#e6c35c")), new Stop(0.11, Color.valueOf("#cb9d32")),
-				new Stop(0.31, Color.valueOf("#b98215")), new Stop(0.45, Color.valueOf("#ddb64d")),
-				new Stop(0.57, Color.valueOf("#e4c059")), new Stop(0.64, Color.valueOf("#dfcb90")),
-				new Stop(0.74, Color.valueOf("#d1a43a")), new Stop(0.83, Color.valueOf("#b98215")),
-				new Stop(0.97, Color.valueOf("#c8972c")) };
-		LinearGradient gradient = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
+		Stop[] stops = new Stop[] { new Stop(0, Color.valueOf("#48484a")), new Stop(0.10, Color.valueOf("#b9b9bd")),
+				new Stop(0.16, Color.valueOf("#717174")), new Stop(0.20, Color.valueOf("#565659")),
+				new Stop(0.28, Color.valueOf("#29292c")), new Stop(0.40, Color.valueOf("#17171b")),
+				new Stop(0.45, Color.valueOf("#38383b")), new Stop(0.60, Color.valueOf("#54555A")),
+				new Stop(0.67, Color.valueOf("#1E1E20")), new Stop(0.79, Color.valueOf("#959599")),
+				new Stop(0.95, Color.valueOf("#b8b8be")) };
+		LinearGradient gradient = new LinearGradient(0, 0, 0.5, 0.5, true, CycleMethod.REFLECT, stops);
 
 		shape.setFill(gradient);
-		shape.setStroke(Color.valueOf("#b98215"));
+//		shape.setEffect(innerShadow());
+		shape.setStroke(Color.rgb(52, 52, 52, 0.9));
 		shape.setStrokeWidth(0.8);
 
 		return shape;

@@ -1,14 +1,48 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root{
-	-white-ish: rgba(255.0, 255.0, 255.0, 0.9);
+	-white-ish: rgba(255.0, 255.0, 255.0, 1.0);
 	-black-ish: rgba(0.0, 0.0, 0.0, 0.8);
+	-cinza: rgba(0.33, 0.33, 0.35, 0.8);
 }
 
 #application-area{
-	-fx-arc-width: 25.0;
-	-fx-arc-height: 25.0;
+	-fx-arc-width: 30.0;
+	-fx-arc-height: 30.0;
 	-fx-fill: -black-ish;
 	-fx-stroke-width: 0.2ex;
-	-fx-stroke: -white-ish;
+	-fx-stroke: black;
 }
+
+.menu-bar{
+	-fx-background-radius: 25.0;
+	-fx-background-color: -black-ish;
+	-fx-text-fill: -white-ish;
+	-fx-font-family: "Roboto mono";
+}
+
+.menu-bar .menu {
+    -fx-background-color: -black-ish;
+	-fx-background-radius: 25.0;
+    -fx-text-fill: -cinza;
+}
+
+.menu-bar .menu:hover {
+	-fx-background-color: -black-ish;
+	-fx-background-radius: 25.0;
+    -fx-text-fill: #050102;
+}
+
+.menu-bar .menu-item {
+	-fx-background-radius: 20.0;
+	-fx-background-color: black;
+	-fx-alignment: center;
+	-fx-text-fill: -cinza;
+}
+
+.menu-bar .menu-item:hover {
+	-fx-background-color: -black-ish;
+	-fx-background-radius: 20.0;
+	
+}
+

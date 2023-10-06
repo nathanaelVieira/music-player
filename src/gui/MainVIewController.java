@@ -4,17 +4,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import gui.graphic.resources.BorderArea;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.RadialGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.shape.Path;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 public class MainVIewController implements Initializable {
 
@@ -25,11 +23,19 @@ public class MainVIewController implements Initializable {
 	private Rectangle rectangledArea;
 
 	@FXML
-	private Rectangle rectangledAreaBorder;
+	private MenuBar menuBar;
+
+	@FXML
+	private Menu file;
+
+	@FXML
+	private MenuItem close;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		backgroundArea.getChildren().add(BorderArea.getBorder());
+
+		close.setOnAction(event -> Platform.exit());
 	}
 
 }

@@ -27,7 +27,6 @@ public class Main extends Application {
 			Scene scene = new Scene(root, 551, 275, Color.rgb(0, 0, 0, 0));
 			PRIMARY_STAGE.setScene(scene);
 
-
 			startMoveScene();
 			PRIMARY_STAGE.show();
 		} catch (Exception e) {
