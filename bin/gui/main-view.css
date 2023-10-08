@@ -17,32 +17,26 @@
 .menu-bar{
 	-fx-background-radius: 25.0;
 	-fx-background-color: -black-ish;
-	-fx-text-fill: -white-ish;
 	-fx-font-family: "Roboto mono";
 }
 
 .menu-bar .menu {
     -fx-background-color: -black-ish;
-	-fx-background-radius: 25.0;
-    -fx-text-fill: -cinza;
+    -fx-text-fill: white;
 }
 
 .menu-bar .menu:hover {
-	-fx-background-color: -black-ish;
-	-fx-background-radius: 25.0;
     -fx-text-fill: #050102;
 }
 
 .menu-bar .menu-item {
-	-fx-background-radius: 20.0;
 	-fx-background-color: black;
 	-fx-alignment: center;
 	-fx-text-fill: -cinza;
+	-fx-padding: 2.0px;
 }
 
 .menu-bar .menu-item:hover {
-	-fx-background-color: -black-ish;
-	-fx-background-radius: 20.0;
-	
+	-fx-background-color: rgba(0.12, 0.12, 0.13, 0.8);
 }
 

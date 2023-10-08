@@ -13,6 +13,7 @@ import javafx.stage.WindowEvent;
 public class Main extends Application {
 
 	private static Stage PRIMARY_STAGE;
+
 	private static Point2D pointAnchorage;
 	private static Point2D pointPreviousLocation;
 
@@ -27,7 +28,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root, 551, 275, Color.rgb(0, 0, 0, 0));
 			PRIMARY_STAGE.setScene(scene);
 
-			startMoveScene();
+//			startMoveScene();
 			PRIMARY_STAGE.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -36,6 +37,14 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public static Stage getPRIMARY_STAGE() {
+		return PRIMARY_STAGE;
+	}
+
+	public static void setPRIMARY_STAGE(Stage pRIMARY_STAGE) {
+		PRIMARY_STAGE = pRIMARY_STAGE;
 	}
 
 	private void startMoveScene() {
@@ -59,5 +68,4 @@ public class Main extends Application {
 			pointPreviousLocation = new Point2D(PRIMARY_STAGE.getX(), PRIMARY_STAGE.getY());
 		});
 	}
-
 }

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
 <Group fx:id="backgroundArea" stylesheets="@main-view.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainVIewController">
@@ -18,11 +25,12 @@
                </color>
             </InnerShadow>
          </effect></Rectangle>
-      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="551.0" style="-fx-arc-width: 20;">
+      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="551.0">
         <menus>
           <Menu fx:id="file" mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="close" mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="close" mnemonicParsing="false" onAction="#onFileChooserSelected" text="Open" />
+                  <MenuItem mnemonicParsing="false" text="Exit System" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -36,6 +44,42 @@
             </items>
           </Menu>
         </menus>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </MenuBar>
+      <ListView layoutX="267.0" layoutY="31.0" prefHeight="190.0" prefWidth="270.0" style="-fx-background-color: black;" stylesheets="@main-view.css">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="30.0" right="30.0" />
+         </padding>
+      </ListView>
+      <ImageView fitHeight="129.0" fitWidth="200.0" layoutX="33.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+      <Line endX="25.0" endY="-91.0" layoutX="234.0" layoutY="125.0" startX="25.0" startY="93.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.6374045610427856" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.6374045610427856" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+      <Slider layoutX="14.0" layoutY="221.0" prefHeight="14.0" prefWidth="523.0" />
    </children>
 </Group>

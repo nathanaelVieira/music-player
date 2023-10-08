@@ -1,5 +1,6 @@
 package gui.graphic.resources;
 
+import javafx.scene.effect.Glow;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -19,7 +20,7 @@ public class BorderArea {
 		Rectangle rectangleLarger = new Rectangle(551, 275);
 		rectangleLarger.setArcHeight(25);
 		rectangleLarger.setArcWidth(25);
-		Rectangle rectangleSmaller = new Rectangle(2, 3, 546, 269);
+		Rectangle rectangleSmaller = new Rectangle(3, 3.2, 545, 268);
 		rectangleSmaller.setArcHeight(15);
 		rectangleSmaller.setArcWidth(15);
 		shape = Path.subtract(rectangleLarger, rectangleSmaller);
@@ -29,13 +30,15 @@ public class BorderArea {
 				new Stop(0.28, Color.valueOf("#29292c")), new Stop(0.40, Color.valueOf("#17171b")),
 				new Stop(0.45, Color.valueOf("#38383b")), new Stop(0.60, Color.valueOf("#54555A")),
 				new Stop(0.67, Color.valueOf("#1E1E20")), new Stop(0.79, Color.valueOf("#959599")),
-				new Stop(0.95, Color.valueOf("#b8b8be")) };
-		LinearGradient gradient = new LinearGradient(0, 0, 0.5, 0.5, true, CycleMethod.REFLECT, stops);
+				new Stop(0.95, Color.valueOf("#b8b8be")), new Stop(0.99, Color.valueOf("#48484a")) };
+		LinearGradient gradient = new LinearGradient(0, 0, 0.6, 0.5, true, CycleMethod.REFLECT, stops);
 
-		shape.setFill(gradient);
+//		shape.setFill(gradient);
+		shape.setFill(Color.valueOf("#1E1E20"));
 //		shape.setEffect(innerShadow());
 		shape.setStroke(Color.rgb(52, 52, 52, 0.9));
 		shape.setStrokeWidth(0.8);
+		shape.setEffect(new Glow());
 
 		return shape;
 	}
