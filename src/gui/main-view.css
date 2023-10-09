@@ -3,7 +3,7 @@
 .root{
 	-white-ish: rgba(255.0, 255.0, 255.0, 1.0);
 	-black-ish: rgba(0.0, 0.0, 0.0, 0.8);
-	-cinza: rgba(0.33, 0.33, 0.35, 0.8);
+	-bg-blue: linear-gradient(to bottom, rgba(1.0, 168.0, 253.0, 90.0), rgba(9.0, 53.0, 97.0, 90.0));
 }
 
 #application-area{
@@ -11,22 +11,39 @@
 	-fx-arc-height: 30.0;
 	-fx-fill: -black-ish;
 	-fx-stroke-width: 0.2ex;
-	-fx-stroke: black;
 }
+
+/* MENU-BAR CONFIGURAÇÕES */
 
 .menu-bar{
 	-fx-background-radius: 25.0;
-	-fx-background-color: -black-ish;
-	-fx-font-family: "Roboto mono";
+	-fx-background-color:-bg-blue;
+	-fx-font-family: 'Cascadia Code';
+	-fx-font-weight: bold;
+	
 }
 
 .menu-bar .menu {
-    -fx-background-color: -black-ish;
-    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5.0;
+    -fx-padding: 0.0 1.0cm 6.0px 3.0;
+    -fx-alignment: center-right;
+    -fx-translate-y: 5.0px;
+    -fx-translate-x: 2.0px;
+}
+
+.menu .label{
+	-fx-text-fill: white;
+}
+
+.menu .label {
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(glow, #3498db, 10.0, 1.0, 0.0, 0.0); /* Efeito de brilho */
 }
 
 .menu-bar .menu:hover {
-    -fx-text-fill: #050102;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(glow, #3498db, 10.0, 1.0, 0.0, 0.0); /* Efeito de brilho */
 }
 
 .menu-bar .menu-item {
@@ -40,3 +57,24 @@
 	-fx-background-color: rgba(0.12, 0.12, 0.13, 0.8);
 }
 
+
+/* SLIDER CONFIGURAÇÕES */
+
+
+
+.jfx-slider > .thumb {
+     -fx-background-color: transparent;
+     -fx-padding: 0px;
+}
+
+.jfx-slider > .animated-thumb {
+     -fx-background-color: transparent;
+}
+
+.jfx-slider > .track {
+     -fx-background-color: #1e1e20;
+}
+
+.jfx-slider > .colored-track {
+     -fx-background-color: linear-gradient(to right, rgba(1.0, 168.0, 253.0, 90.0), rgba(9.0, 53.0, 97.0, 90.0));
+}

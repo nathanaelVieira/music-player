@@ -4,23 +4,30 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXSlider;
+
 import application.Main;
 import gui.graphic.resources.BorderArea;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class MainVIewController implements Initializable {
+
+	static {
+		Font.loadFont(MainVIewController.class
+				.getResourceAsStream("/resource/fonts/AR_One_Sans/static/AROneSans-Regular.ttf"), 10);
+	}
 
 	private static Point2D pointAnchorage;
 	private static Point2D pointPreviousLocation;
@@ -42,6 +49,9 @@ public class MainVIewController implements Initializable {
 
 	@FXML
 	private ListView<File> listView;
+
+	@FXML
+	private JFXSlider slider;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

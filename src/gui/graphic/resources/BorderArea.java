@@ -1,6 +1,7 @@
 package gui.graphic.resources;
 
 import javafx.scene.effect.Glow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -25,18 +26,14 @@ public class BorderArea {
 		rectangleSmaller.setArcWidth(15);
 		shape = Path.subtract(rectangleLarger, rectangleSmaller);
 
-		Stop[] stops = new Stop[] { new Stop(0, Color.valueOf("#48484a")), new Stop(0.10, Color.valueOf("#b9b9bd")),
-				new Stop(0.16, Color.valueOf("#717174")), new Stop(0.20, Color.valueOf("#565659")),
-				new Stop(0.28, Color.valueOf("#29292c")), new Stop(0.40, Color.valueOf("#17171b")),
-				new Stop(0.45, Color.valueOf("#38383b")), new Stop(0.60, Color.valueOf("#54555A")),
-				new Stop(0.67, Color.valueOf("#1E1E20")), new Stop(0.79, Color.valueOf("#959599")),
-				new Stop(0.95, Color.valueOf("#b8b8be")), new Stop(0.99, Color.valueOf("#48484a")) };
+		Stop[] stops = new Stop[] { new Stop(0, Color.valueOf("#093561")),new Stop(0.20, Color.valueOf("#01a8fd")), new Stop(0.17, Color.valueOf("#078e89")),
+				new Stop(0.54, Color.valueOf("#4fdafc")), new Stop(0.86, Color.valueOf("#0482ca")),
+				new Stop(1, Color.valueOf("#093561")) };
 		LinearGradient gradient = new LinearGradient(0, 0, 0.6, 0.5, true, CycleMethod.REFLECT, stops);
-
-//		shape.setFill(gradient);
-		shape.setFill(Color.valueOf("#1E1E20"));
-//		shape.setEffect(innerShadow());
-		shape.setStroke(Color.rgb(52, 52, 52, 0.9));
+		
+		
+		shape.setFill(gradient);
+		shape.setStroke(Color.rgb(9, 53, 97, 0.9));
 		shape.setStrokeWidth(0.8);
 		shape.setEffect(new Glow());
 
