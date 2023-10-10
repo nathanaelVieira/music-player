@@ -9,8 +9,11 @@ import com.jfoenix.controls.JFXSlider;
 
 import application.Main;
 import gui.graphic.resources.BorderArea;
+import javafx.animation.ScaleTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
@@ -21,14 +24,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
+import javafx.util.Duration;
 
 public class MainVIewController implements Initializable {
 
@@ -61,15 +66,31 @@ public class MainVIewController implements Initializable {
 	@FXML
 	private JFXSlider slider;
 
+	@FXML
+	private ImageView closeButtonImageView;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		startMoveScene();
+		onClosingPlatform();
 		backgroundArea.getChildren().add(BorderArea.getBorder());
 
 		close.setStyle("-fx-text-fill: white;");
 		menuBar.setStyle("-fx-text-fill: white;");
 
-//		close.setOnAction(event -> Platform.exit());
+	}
+
+	public void onClosingPlatform() {
+		ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(300), closeButtonImageView);
+		scaleTransition.setFromX(1.0);
+		scaleTransition.setFromY(1.0);
+		scaleTransition.setToX(1.2);
+		scaleTransition.setToY(1.2);
+		scaleTransition.setCycleCount(2);
+		scaleTransition.autoReverseProperty();
+		scaleTransition.setOnFinished(eventFinished -> Platform.exit());
+
+		closeButtonImageView.setOnMouseClicked(event -> scaleTransition.play());
 	}
 
 	public void onFileChooserSelected() {
@@ -79,7 +100,6 @@ public class MainVIewController implements Initializable {
 
 		ObservableList<File> listMusics = FXCollections.observableArrayList(selectedFile);
 		listView.getItems().addAll(listMusics);
-
 
 		listView.setCellFactory(new Callback<ListView<File>, ListCell<File>>() {
 
@@ -97,6 +117,8 @@ public class MainVIewController implements Initializable {
 							setTooltip(tooltip);
 							setStyle("-fx-background-color: black; -fx-text-fill: white;");
 
+						} else {
+							setStyle("-fx-background-color: black;");
 						}
 					};
 				};
@@ -104,10 +126,7 @@ public class MainVIewController implements Initializable {
 				return cell;
 			}
 		});
-		
-		ScrollPane scrollPane = (ScrollPane) listView.lookup(".scroll-pane");
-		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-		
+
 	}
 
 	private void startMoveScene() {

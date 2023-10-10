@@ -25,7 +25,7 @@
 
 <Group fx:id="backgroundArea" stylesheets="@main-view.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainVIewController">
    <children>
-      <Rectangle id="application-area" fx:id="rectangledArea" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="275.0" stroke="BLACK" strokeType="INSIDE" width="551.0">
+      <Rectangle id="application-area" fx:id="rectangledArea" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="275.0" stroke="#0e2f6b" strokeType="INSIDE" width="551.0">
          <effect>
             <InnerShadow blurType="GAUSSIAN" height="60.0" radius="29.5" width="60.0">
                <color>
@@ -110,18 +110,18 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <StackPane alignment="CENTER_LEFT" layoutX="525.0" layoutY="4.3" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="20.0">
+      <StackPane alignment="CENTER_LEFT" layoutX="521.0" layoutY="1.8" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="20.0">
          <children>
             <HBox prefHeight="25.0" prefWidth="39.0">
                <children>
-                  <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="closeButtonImageView" fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resource/images/poder.png" />
                      </image>
                      <effect>
-                        <Glow level="0.86">
+                        <Glow level="0.5">
                            <input>
-                              <DropShadow height="0.0" radius="0.0" width="0.0">
+                              <DropShadow height="1.0" radius="0.0" width="0.0">
                                  <color>
                                     <Color green="0.7809523940086365" blue="1.0" />
                                  </color>
