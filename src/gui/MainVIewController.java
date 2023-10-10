@@ -2,25 +2,33 @@ package gui;
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXSlider;
 
 import application.Main;
 import gui.graphic.resources.BorderArea;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 
 public class MainVIewController implements Initializable {
 
@@ -48,7 +56,7 @@ public class MainVIewController implements Initializable {
 	private MenuItem close;
 
 	@FXML
-	private ListView<File> listView;
+	private ListView<File> listView = new ListView<>();
 
 	@FXML
 	private JFXSlider slider;
@@ -66,10 +74,40 @@ public class MainVIewController implements Initializable {
 
 	public void onFileChooserSelected() {
 		FileChooser chooser = new FileChooser();
-		File selectedFile = chooser.showOpenDialog(Main.getPRIMARY_STAGE());
-		if (selectedFile != null) {
-			System.out.println("Arquivo selecionado: " + selectedFile.getName());
-		}
+//		File selectedFile = chooser.showOpenDialog(Main.getPRIMARY_STAGE());
+		List<File> selectedFile = chooser.showOpenMultipleDialog(Main.getPRIMARY_STAGE());
+
+		ObservableList<File> listMusics = FXCollections.observableArrayList(selectedFile);
+		listView.getItems().addAll(listMusics);
+
+
+		listView.setCellFactory(new Callback<ListView<File>, ListCell<File>>() {
+
+			@Override
+			public ListCell<File> call(ListView<File> param) {
+				Label lead = new Label();
+				Tooltip tooltip = new Tooltip();
+				ListCell<File> cell = new ListCell<>() {
+					protected void updateItem(File item, boolean empty) {
+						super.updateItem(item, empty);
+						if (item != null) {
+							lead.setText(item.getName());
+							setText(item.getName());
+							tooltip.setText(item.getName());
+							setTooltip(tooltip);
+							setStyle("-fx-background-color: black; -fx-text-fill: white;");
+
+						}
+					};
+				};
+
+				return cell;
+			}
+		});
+		
+		ScrollPane scrollPane = (ScrollPane) listView.lookup(".scroll-pane");
+		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		
 	}
 
 	private void startMoveScene() {

@@ -57,6 +57,10 @@
 	-fx-background-color: rgba(0.12, 0.12, 0.13, 0.8);
 }
 
+.list-view .scroll-bar {
+    -fx-background-color: black; /* Substitua com a cor desejada */
+}
+
 
 /* SLIDER CONFIGURAÇÕES */
 
