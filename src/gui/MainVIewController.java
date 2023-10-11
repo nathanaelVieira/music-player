@@ -9,11 +9,11 @@ import com.jfoenix.controls.JFXSlider;
 
 import application.Main;
 import gui.graphic.resources.BorderArea;
+import gui.tools.Tracks;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
@@ -26,10 +26,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
@@ -44,6 +42,7 @@ public class MainVIewController implements Initializable {
 
 	private static Point2D pointAnchorage;
 	private static Point2D pointPreviousLocation;
+	private List<File> musicList;
 
 	@FXML
 	private Group backgroundArea;
@@ -94,11 +93,13 @@ public class MainVIewController implements Initializable {
 	}
 
 	public void onFileChooserSelected() {
-		FileChooser chooser = new FileChooser();
-//		File selectedFile = chooser.showOpenDialog(Main.getPRIMARY_STAGE());
-		List<File> selectedFile = chooser.showOpenMultipleDialog(Main.getPRIMARY_STAGE());
+		Tracks tracks = new Tracks();
+		musicList = tracks.rescueTackList(getStageMain());
+		addListView();
+	}
 
-		ObservableList<File> listMusics = FXCollections.observableArrayList(selectedFile);
+	private void addListView() {
+		ObservableList<File> listMusics = FXCollections.observableArrayList(musicList);
 		listView.getItems().addAll(listMusics);
 
 		listView.setCellFactory(new Callback<ListView<File>, ListCell<File>>() {
@@ -126,7 +127,6 @@ public class MainVIewController implements Initializable {
 				return cell;
 			}
 		});
-
 	}
 
 	private void startMoveScene() {

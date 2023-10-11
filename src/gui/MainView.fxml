@@ -40,10 +40,9 @@
       </ListView>
       <MenuBar fx:id="menuBar" layoutY="2.0" opacity="0.76" prefHeight="25.0" prefWidth="551.0">
         <menus>
-          <Menu fx:id="file" mnemonicParsing="false" text="File">
+          <Menu fx:id="file" mnemonicParsing="false" text="Arquivo">
             <items>
-              <MenuItem fx:id="close" mnemonicParsing="false" onAction="#onFileChooserSelected" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Exit System" />
+              <MenuItem fx:id="close" mnemonicParsing="false" onAction="#onFileChooserSelected" text="Selecionar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
