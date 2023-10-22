@@ -8,7 +8,9 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXSlider;
 
 import application.Main;
-import gui.graphic.resources.BorderArea;
+import gui.graphic.resources.CustomizedCell;
+import gui.graphic.resources.NextButton;
+import gui.graphic.resources.PreviousButton;
 import gui.tools.Tracks;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -18,19 +20,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
 public class MainVIewController implements Initializable {
@@ -70,12 +69,29 @@ public class MainVIewController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		System.out.println(rectangledArea.getWidth() / 2);
+
 		startMoveScene();
 		onClosingPlatform();
-		backgroundArea.getChildren().add(BorderArea.getBorder());
+//		backgroundArea.getChildren().add(BorderArea.getBorder());
 
 		close.setStyle("-fx-text-fill: white;");
 		menuBar.setStyle("-fx-text-fill: white;");
+
+		NextButton nextButton = new NextButton();
+		PreviousButton previousButton = new PreviousButton();
+		backgroundArea.getChildren().add(nextButton);
+		backgroundArea.getChildren().add(previousButton);
+
+		previousButton.setLayoutX(185);
+		previousButton.setLayoutY(238);
+
+		nextButton.setLayoutX(285);
+		nextButton.setLayoutY(238);
+
+		previousButton.setScaleY(0.6);
+		nextButton.setScaleY(0.6);
 
 	}
 
@@ -92,41 +108,19 @@ public class MainVIewController implements Initializable {
 		closeButtonImageView.setOnMouseClicked(event -> scaleTransition.play());
 	}
 
+	@FXML
 	public void onFileChooserSelected() {
 		Tracks tracks = new Tracks();
 		musicList = tracks.rescueTackList(getStageMain());
-		addListView();
-	}
 
-	private void addListView() {
 		ObservableList<File> listMusics = FXCollections.observableArrayList(musicList);
 		listView.getItems().addAll(listMusics);
 
-		listView.setCellFactory(new Callback<ListView<File>, ListCell<File>>() {
+		listView.setCellFactory(new CustomizedCell());
+	}
 
-			@Override
-			public ListCell<File> call(ListView<File> param) {
-				Label lead = new Label();
-				Tooltip tooltip = new Tooltip();
-				ListCell<File> cell = new ListCell<>() {
-					protected void updateItem(File item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item != null) {
-							lead.setText(item.getName());
-							setText(item.getName());
-							tooltip.setText(item.getName());
-							setTooltip(tooltip);
-							setStyle("-fx-background-color: black; -fx-text-fill: white;");
+	private void assignPlaybackMusic() {
 
-						} else {
-							setStyle("-fx-background-color: black;");
-						}
-					};
-				};
-
-				return cell;
-			}
-		});
 	}
 
 	private void startMoveScene() {

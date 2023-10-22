@@ -1,0 +1,9 @@
+.next-button {
+	-fx-shape: "M 300 300 L 300 200 L 400 250 L 400 200 L 500 250 L 400 300 L 400 250 Z";
+	-fx-background-color: linear-gradient(to right,#FFFFFF ,#858585);
+}
+
+.previous-button {
+	-fx-shape: "M 300 250 L 400 200 L 400 250 L 500 200 L 500 300 L 400 250 L 400 300 Z";
+	-fx-background-color: linear-gradient(to right, #858585, #FFFFFF);
+}

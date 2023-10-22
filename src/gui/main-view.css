@@ -16,7 +16,7 @@
 
 .menu-bar{
 	-fx-background-radius: 25.0;
-	-fx-background-color:-bg-blue;
+	-fx-background-color:-black-ish;
 	-fx-font-family: 'Cascadia Code';
 	-fx-font-weight: bold;
 	
@@ -39,12 +39,12 @@
 
 .menu .label {
 	-fx-text-fill: white;
-	-fx-effect: dropshadow(glow, #3498db, 10.0, 1.0, 0.0, 0.0); 
+	
 }
 
 .menu-bar .menu:hover {
     -fx-text-fill: white;
-    -fx-effect: dropshadow(glow, #3498db, 10.0, 1.0, 0.0, 0.0); 
+    
 }
 
 .menu-bar .menu-item {
@@ -66,6 +66,13 @@
     -fx-background-color: black; 
 }
 
+.list-view .scroll-bar .thumb {
+	-fx-background-color: #3D3E40;
+}
+
+.list-view .scroll-bar .track {
+	-fx-background-color: transparent;
+}
 
 /* SLIDER CONFIGURAÇÕES */
 
@@ -83,5 +90,5 @@
 }
 
 .jfx-slider > .colored-track {
-     -fx-background-color: linear-gradient(to right, rgba(1.0, 168.0, 253.0, 90.0), rgba(9.0, 53.0, 97.0, 90.0));
+     -fx-background-color: linear-gradient(to right, #858585, #FFFFFF);
 }
